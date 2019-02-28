@@ -6,7 +6,6 @@ import time
 import re
 import urlparse, urllib2
 import hashlib
-import pyfiglet
 
 
 class bcolors:
@@ -133,20 +132,41 @@ def scanDarlingScan():
 			print 
 			continue
 		myPrint("Misconfigured Firbase Instance Found: "+str, "INSECURE_WS")
+	print
 
 ####################################################################################################
 
 
 ####################################################################################################
-result = pyfiglet.figlet_format("Firebase Scanner", font = "poison")
-print "Developed by @"
+print(bcolors.INFO+""" 
+				@@@@@@@@  @@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@   @@@@@@@@  
+				@@!       @@!  @@!  @@@  @@!       @@!  @@@  @@!  @@@  !@@       @@!       
+				!@!       !@!  !@!  @!@  !@!       !@   @!@  !@!  @!@  !@!       !@!       
+				@!!!:!    !!@  @!@!!@!   @!!!:!    @!@!@!@   @!@!@!@!  !!@@!!    @!!!:!    
+				!!!!!:    !!!  !!@!@!    !!!!!:    !!!@!!!!  !!!@!!!!   !!@!!!   !!!!!:    
+				!!:       !!:  !!: :!!   !!:       !!:  !!!  !!:  !!!       !:!  !!:       
+				:!:       :!:  :!:  !:!  :!:       :!:  !:!  :!:  !:!      !:!   :!:       
+				 ::        ::  ::   :::   :: ::::   :: ::::  ::   :::  :::: ::    :: ::::    
+				                                                                           
+				                                                                      
+				 @@@@@@    @@@@@@@   @@@@@@   @@@  @@@  @@@  @@@  @@@@@@@@  @@@@@@@   
+				@@@@@@@   @@@@@@@@  @@@@@@@@  @@@@ @@@  @@@@ @@@  @@@@@@@@  @@@@@@@@  
+				!@@       !@@       @@!  @@@  @@!@!@@@  @@!@!@@@  @@!       @@!  @@@  
+				!@!       !@!       !@!  @!@  !@!!@!@!  !@!!@!@!  !@!       !@!  @!@  
+				!!@@!!    !@!       @!@!@!@!  @!@ !!@!  @!@ !!@!  @!!!:!    @!@!!@!   
+				 !!@!!!   !!!       !!!@!!!!  !@!  !!!  !@!  !!!  !!!!!:    !!@!@!    
+				     !:!  :!!       !!:  !!!  !!:  !!!  !!:  !!!  !!:       !!: :!!   
+				    !:!   :!:       :!:  !:!  :!:  !:!  :!:  !:!  :!:       :!:  !:!  
+				:::: ::    ::: :::  ::   :::   ::   ::   ::   ::   :: ::::  ::   :::"""+bcolors.OKRED+bcolors.BOLD+"""
 
-print(result)  
+                				
+                				# Developed By Shiv Sahni - @shiv__sahni
+"""+bcolors.ENDC)
 
 if (len(sys.argv)<3):
 	myPrint("Please provide the required arguments to initiate scanning.", "ERROR")
 	print ""
-	myPrint("Usage: ./SourceCodeAnalyzer.py [options]","ERROR")
+	myPrint("Usage: python FirebaseMisconfig.py [options]","ERROR")
 	myPrint("\t-p/--path <apkPathName>","ERROR")
 	myPrint("\t-f/--firebase <commaSeperatedFirebaseProjectName>","ERROR")
 	myPrint("Please try again!!", "ERROR") 
@@ -164,4 +184,4 @@ if (sys.argv[1]=="-f" or sys.argv[1]=="--firebase"):
 	isNewInstallation()
 	scanDarlingScan()
 
-myPrint("Thank You For Using FireBase Scanner","MESSAGE")
+myPrint("Thank You For Using FireBase Scanner","INFO")
