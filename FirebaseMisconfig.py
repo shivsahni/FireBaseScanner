@@ -89,7 +89,7 @@ def reverseEngineerApplication(apkFileName):
 		myPrint("Apktool failed with exit status "+str(result)+". Please Try Again.", "ERROR")
 		print
 		exit(1)
-	myPrint("Successfully decompiled the application. Proceeding with enumeraing firebase peoject names from the application code.", "INFO")
+	myPrint("Successfully decompiled the application. Proceeding with enumeraing firebase project names from the application code.", "INFO")
 
 def findFirebaseProjectNames():
 	global firbaseProjectList
@@ -119,7 +119,7 @@ def scanDarlingScan():
 			response = urllib2.urlopen(url)
 		except urllib2.HTTPError as err:
 			if(err.code==401):
-				myPrint("Secure Firbase Instance Found: "+str, "SECURE")
+				myPrint("Secure Firebase Instance Found: "+str, "SECURE")
 				continue
 			if(err.code==404):
 				myPrint("Project doesnot exist: "+str, "OUTPUT_WS")
@@ -131,7 +131,7 @@ def scanDarlingScan():
 			myPrint("Facing connectivity issues. Please Check the Network Connectivity and Try Again.", "ERROR")
 			print 
 			continue
-		myPrint("Misconfigured Firbase Instance Found: "+str, "INSECURE_WS")
+		myPrint("Misconfigured Firebase Instance Found: "+str, "INSECURE_WS")
 	print
 
 ####################################################################################################
