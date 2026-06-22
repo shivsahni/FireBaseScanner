@@ -1,12 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+
 import os
 import sys
 import ntpath
 import time
 import re
-import urlparse, urllib2
 import hashlib
+import subprocess
 
+from urllib.parse import urlparse
+from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
 
 class bcolors:
     TITLE = '\033[95m'
@@ -34,25 +38,25 @@ apktoolPath="./Dependencies/apktool_2.3.4.jar"
 
 def myPrint(text, type):
 	if(type=="INFO"):
-		print bcolors.INFO+text+bcolors.ENDC+"\n"
+		print(bcolors.INFO+text+bcolors.ENDC+"\n")
 		return
 	if(type=="ERROR"):
-		print bcolors.BGRED+bcolors.FGWHITE+bcolors.BOLD+text+bcolors.ENDC
+		print(bcolors.BGRED+bcolors.FGWHITE+bcolors.BOLD+text+bcolors.ENDC)
 		return
 	if(type=="MESSAGE"):
-		print bcolors.TITLE+bcolors.BOLD+text+bcolors.ENDC+"\n"
+		print(bcolors.TITLE+bcolors.BOLD+text+bcolors.ENDC+"\n")
 		return
 	if(type=="INSECURE_WS"):
-		print bcolors.OKRED+bcolors.BOLD+text+bcolors.ENDC
+		print(bcolors.OKRED+bcolors.BOLD+text+bcolors.ENDC)
 		return
 	if(type=="OUTPUT"):
-		print bcolors.OKBLUE+bcolors.BOLD+text+bcolors.ENDC+"\n"
+		print(bcolors.OKBLUE+bcolors.BOLD+text+bcolors.ENDC+"\n")
 		return
 	if(type=="OUTPUT_WS"):
-		print bcolors.OKBLUE+bcolors.BOLD+text+bcolors.ENDC
+		print(bcolors.OKBLUE+bcolors.BOLD+text+bcolors.ENDC)
 		return
 	if(type=="SECURE"):
-		print bcolors.OKGREEN+bcolors.BOLD+text+bcolors.ENDC
+		print(bcolors.OKGREEN+bcolors.BOLD+text+bcolors.ENDC)
 		return
 
 
@@ -165,12 +169,12 @@ print(bcolors.INFO+"""
 
 if (len(sys.argv)<3):
 	myPrint("Please provide the required arguments to initiate scanning.", "ERROR")
-	print ""
+	print("")
 	myPrint("Usage: python FirebaseMisconfig.py [options]","ERROR")
 	myPrint("\t-p/--path <apkPathName>","ERROR")
 	myPrint("\t-f/--firebase <commaSeperatedFirebaseProjectName>","ERROR")
 	myPrint("Please try again!!", "ERROR") 
-	print ""
+	print("")
 	exit(1);
 if (sys.argv[1]=="-p" or sys.argv[1]=="--path"):
 	apkFilePath=sys.argv[2];
